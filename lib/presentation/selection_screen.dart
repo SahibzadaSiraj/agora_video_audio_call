@@ -47,6 +47,19 @@ class SelectionScreen extends StatelessWidget {
                 title: "Video Call",
                 color: Colors.white,
               ),
+            ),
+            MaterialButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+              minWidth: size.width * 0.8,
+              color: AppConstants.primaryColor,
+              onPressed: () {
+                Navigator.of(context).pushNamed("/twilio");
+              },
+              child: TextWidget(
+                title: "Twilio Voice Call",
+                color: Colors.white,
+              ),
             )
           ],
         ),
