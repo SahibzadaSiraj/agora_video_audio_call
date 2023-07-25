@@ -55,7 +55,7 @@ class _TwilioScreenState extends State<TwilioScreen> {
                   ),
                   contentPadding: EdgeInsets.all(10.0),
                   hintText: '+447440488904',
-                  labelText: 'Enter phone nnumber',
+                  labelText: 'Enter phone number',
                   prefixIcon: Icon(
                     Icons.person,
                     color: Colors.green,
@@ -77,14 +77,14 @@ class _TwilioScreenState extends State<TwilioScreen> {
                   twilioController
                       .twilioCallAPI(textController.text)
                       .then((value) {
-                    if (value.statusCode == 201) {
+                    if (value.statusCode == 201 || value.statusCode == 200) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text("Call request sent successfully!")));
                       textController.clear();
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(
-                              "Request wennt wrong: ${value.statusCode}")));
+                          content:
+                              Text("Request went wrong: ${value.statusCode}")));
                     }
                   });
                 } else {
@@ -92,10 +92,18 @@ class _TwilioScreenState extends State<TwilioScreen> {
                       const SnackBar(content: Text("enter correct format")));
                 }
               },
-              child: TextWidget(
-                title: "Call",
-                color: Colors.white,
-              ),
+              child: twilioController.loading
+                  ? const SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
+                    )
+                  : TextWidget(
+                      title: "Call",
+                      color: Colors.white,
+                    ),
             )
           ],
         ),

@@ -13,7 +13,7 @@ class AppConstants {
   static Color primaryColor = Colors.blue;
 
   static String accountId = 'AC4aa989c9ccd294cb38e1f332c72e128b';
-  static String twilioToken = 'c721508d810856e147cceaab5ad4f697';
+  static String twilioToken = '73db76988ff066935dba3dcc5cc5fc66';
   static String twilioVoiceCallApi =
       'https://api.twilio.com/2010-04-01/Accounts/AC4aa989c9ccd294cb38e1f332c72e128b/Calls.json';
 }
